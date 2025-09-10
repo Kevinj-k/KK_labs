@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtq88lppacpmq"]
+[gd_scene load_steps=11 format=3 uid="uid://dtq88lppacpmq"]
 
+[ext_resource type="Script" uid="uid://dagy46qrfedxp" path="res://lab2/pong.gd" id="1_1dudu"]
 [ext_resource type="Script" uid="uid://chppl2w37xcsd" path="res://lab2/paddle.gd" id="1_6rslj"]
 [ext_resource type="Texture2D" uid="uid://fflaheyl02ja" path="res://lab2/Paddle.png" id="2_nsyrk"]
 [ext_resource type="Script" uid="uid://dvwj4w6a0gxuq" path="res://lab2/ball.gd" id="3_j5fbt"]
@@ -19,6 +20,7 @@ radius = 118.857
 size = Vector2(127.25, 497)
 
 [node name="Pong" type="Node2D"]
+script = ExtResource("1_1dudu")
 
 [node name="paddle" type="CharacterBody2D" parent="."]
 position = Vector2(110, 317)
