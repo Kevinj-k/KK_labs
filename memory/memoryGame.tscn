@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx6kb7518ugee"]
+
+[ext_resource type="PackedScene" uid="uid://bj6o7y0lwevai" path="res://memory/texture_rect.tscn" id="1_c1vvm"]
+[ext_resource type="Script" uid="uid://bhjaqq8o3snvb" path="res://memory/memory_game.gd" id="1_qdnqb"]
+[ext_resource type="Texture2D" uid="uid://c1nd64rpx5dxj" path="res://memory/sprites/PNG/Cards (medium)/card_back.png" id="2_qdnqb"]
+[ext_resource type="Texture2D" uid="uid://clrmfuuhyibjl" path="res://memory/sprites/PNG/Cards (medium)/card_clubs_02.png" id="4_mkugr"]
+[ext_resource type="Texture2D" uid="uid://d3ylpw4qjfqad" path="res://memory/sprites/PNG/Cards (medium)/card_spades_04.png" id="5_si7va"]
+[ext_resource type="Texture2D" uid="uid://cacalofdsi2ea" path="res://memory/sprites/PNG/Cards (medium)/card_hearts_05.png" id="6_25mhs"]
+[ext_resource type="Texture2D" uid="uid://v0w4t1twgapc" path="res://memory/sprites/PNG/Cards (medium)/card_spades_K.png" id="7_7e4oe"]
+[ext_resource type="Texture2D" uid="uid://bowosfoai1gaa" path="res://memory/sprites/PNG/Cards (medium)/card_diamonds_04.png" id="8_t0sbs"]
+
+[node name="MemoryGame" type="Node2D"]
+script = ExtResource("1_qdnqb")
+
+[node name="GameMain" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gridcontainer" type="GridContainer" parent="GameMain"]
+layout_mode = 0
+offset_right = 298.0
+offset_bottom = 298.0
+columns = 3
+
+[node name="Card" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("4_mkugr")
+card_value = "2clubs"
+
+[node name="Card2" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("5_si7va")
+card_value = "4spades"
+
+[node name="Card3" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("6_25mhs")
+card_value = "5hearts"
+
+[node name="Card4" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("6_25mhs")
+card_value = "5hearts"
+
+[node name="Card5" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("7_7e4oe")
+card_value = "kingspade"
+
+[node name="Card6" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("7_7e4oe")
+card_value = "kingspade"
+
+[node name="Card7" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("8_t0sbs")
+card_value = "4diamond"
+
+[node name="Card8" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("4_mkugr")
+card_value = "2clubs"
+
+[node name="Card9" parent="GameMain/gridcontainer" instance=ExtResource("1_c1vvm")]
+layout_mode = 2
+texture = ExtResource("2_qdnqb")
+card_front = ExtResource("5_si7va")
+card_value = "2clubs"
+
+[node name="FlipTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="card_selected" from="GameMain/gridcontainer/Card" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card2" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card3" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card4" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card5" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card6" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card7" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card8" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/gridcontainer/Card9" to="." method="card_clicked"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_flip_timer_timeout"]
