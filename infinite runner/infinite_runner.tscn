@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://chxpy14hwfm3p"]
+
+[ext_resource type="Script" uid="uid://bmyxcmn1d4kcy" path="res://infinite runner/inf_player.gd" id="1_o4ttk"]
+[ext_resource type="SpriteFrames" uid="uid://bnpdwk2c05rbf" path="res://infinite runner/assest/player_frames.tres" id="1_pibnh"]
+[ext_resource type="Script" uid="uid://drli33ttwqk57" path="res://infinite runner/ground_move.gd" id="3_s1tg2"]
+[ext_resource type="Texture2D" uid="uid://ba8jwjhjsa5xl" path="res://infinite runner/assest/platforms.png" id="4_qxda4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0yfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36viu"]
+size = Vector2(108, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ea6"]
+atlas = ExtResource("4_qxda4")
+region = Rect2(16.2025, 0, 32.2487, 10)
+
+[node name="InfiniteRunner" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(283, 244)
+script = ExtResource("1_o4ttk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CapsuleShape2D_j0yfv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(-4, -18)
+sprite_frames = ExtResource("1_pibnh")
+autoplay = "default"
+
+[node name="ground" type="AnimatableBody2D" parent="."]
+script = ExtResource("3_s1tg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(284, 319)
+shape = SubResource("RectangleShape2D_36viu")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+position = Vector2(282, 319)
+scale = Vector2(2.70937, 2.70937)
+texture = SubResource("AtlasTexture_46ea6")
